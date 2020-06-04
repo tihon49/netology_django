@@ -21,9 +21,30 @@
 
 
         <!-- Ваша логика -->
-          {% for line in data %}
-            <p style="background-color: {% cycle 'green' 'yellow' %}">{{ line }}</p>
-          {% endfor %}
+          <table>
+            <tr>
+              {% for i in title %}
+                {% if i|length > 3 %}
+                  <th style="background-color: grey">{{ i }}</th>
+                {% else %}
+                  <th>{{ i }}</th>
+                {% endif %}
+              {% endfor %}
+            </tr>
+
+            {% for row in body %}
+              <tr>
+                {% for i in row %}
+                  {% if i == 2018 %}
+                    <td style="background: red">{{ i }}</td>
+                  {% else %}
+                    <td>{{ i }}</td>
+                  {% endif %}
+                {% endfor %}
+              </tr>
+            {% endfor %}
+
+          </table>
 
 
 

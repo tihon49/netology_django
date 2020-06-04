@@ -13,7 +13,7 @@ def bus_stations(request):
         reader = csv_file.readlines()
 
     stations_list = []
-    # counter = 0
+
     for station in reader[1:]:
         name = station.split(',')[1].replace('"', '').replace('«', '').replace('»', '')
         street = station.split(',')[5]
