@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load static %}
+<!DOCTYPE html>{% load static %} {% load my_filter %}
 <html>
   <head>
     <meta charset="UTF-8">
@@ -34,22 +34,42 @@
             </tr>
 
             <!-- body of the table -->
+            <!-- First variant -->
+<!--            {% for row in body %}-->
+<!--              <tr>-->
+<!--                {% for item in row %}-->
+<!--                  {% if item %}-->
+<!--                    {% if item is row|last %}-->
+<!--                      <td bgcolor="grey">{{ item }}</td>-->
+<!--                    {% elif item > 1 and item < 2 %}-->
+<!--                      <td bgcolor="pink">{{ item }}</td>-->
+<!--                    {% elif item > 2 and item < 5 %}-->
+<!--                      <td bgcolor="ff6866">{{ item }}</td>-->
+<!--                    {% elif item > 5 %}-->
+<!--                      <td bgcolor="red">{{ item }}</td>-->
+<!--                    {% elif item < 0 %}-->
+<!--                      <td bgcolor="green">{{ item }}</td>-->
+<!--                    {% else %}-->
+<!--                      <td>{{ item }}</td>-->
+<!--                    {% endif %}-->
+<!--                  {% else %}-->
+<!--                    <td> </td>-->
+<!--                  {% endif %}-->
+<!--                {% endfor %}-->
+<!--              </tr>-->
+<!--            {% endfor %}-->
+
+
+            <!-- Second variant with own filter -->
+            <!-- body of the table -->
             {% for row in body %}
               <tr>
                 {% for item in row %}
                   {% if item %}
                     {% if item is row|last %}
                       <td bgcolor="grey">{{ item }}</td>
-                    {% elif item > 1 and item < 2 %}
-                      <td bgcolor="pink">{{ item }}</td>
-                    {% elif item > 2 and item < 5 %}
-                      <td bgcolor="ff6866">{{ item }}</td>
-                    {% elif item > 5 %}
-                      <td bgcolor="red">{{ item }}</td>
-                    {% elif item < 0 %}
-                      <td bgcolor="green">{{ item }}</td>
                     {% else %}
-                      <td>{{ item }}</td>
+                      <td style="background-color: {{ item|val2color }}">{{ item }}</td>
                     {% endif %}
                   {% else %}
                     <td> </td>
