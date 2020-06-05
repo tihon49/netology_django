@@ -5,6 +5,10 @@ def home_view(request):
     template_name = 'app/home.html'
     return render(request, template_name)
 
+def base_view(request):
+    template_name = 'app/base.html'
+    return render(request, template_name)
+
 
 def about_view(request):
     template_name = 'app/about.html'
