@@ -40,8 +40,14 @@
                   {% if item %}
                     {% if item is row|last %}
                       <td bgcolor="grey">{{ item }}</td>
-                    {% elif item < 2 %}
+                    {% elif item > 1 and item < 2 %}
+                      <td bgcolor="pink">{{ item }}</td>
+                    {% elif item > 2 and item < 5 %}
+                      <td bgcolor="ff6866">{{ item }}</td>
+                    {% elif item > 5 %}
                       <td bgcolor="red">{{ item }}</td>
+                    {% elif item < 0 %}
+                      <td bgcolor="green">{{ item }}</td>
                     {% else %}
                       <td>{{ item }}</td>
                     {% endif %}

@@ -6,15 +6,15 @@ from django.shortcuts import render
 
 def str_to_float(lst):
     '''
-    :param lst: get a list
-    :return: str items => float items
+    :param lst: list with data
+    :return: if str(i) is float => return float
     '''
     lists_list = []
     for i in lst:
         dig_list = []
         for j in i:
             try:
-                if j > 1000:
+                if float(j) < 1000:
                     j = float(j)
             except:
                 pass
