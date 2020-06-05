@@ -22,23 +22,31 @@
 
         <!-- Ваша логика -->
           <table>
+            <!-- title of the table -->
             <tr>
-              {% for i in title %}
-                {% if i|length > 3 %}
-                  <th style="background-color: grey">{{ i }}</th>
+              {% for item in title %}
+                {% if item is title|last %}
+                  <th bgcolor="grey"> {{ item }} </th>
                 {% else %}
-                  <th>{{ i }}</th>
+                  <th>{{ item }}</th>
                 {% endif %}
               {% endfor %}
             </tr>
 
+            <!-- body of the table -->
             {% for row in body %}
               <tr>
-                {% for i in row %}
-                  {% if i == 2018 %}
-                    <td style="background: red">{{ i }}</td>
+                {% for item in row %}
+                  {% if item %}
+                    {% if item is row|last %}
+                      <td bgcolor="grey">{{ item }}</td>
+                    {% elif item < 2 %}
+                      <td bgcolor="red">{{ item }}</td>
+                    {% else %}
+                      <td>{{ item }}</td>
+                    {% endif %}
                   {% else %}
-                    <td>{{ i }}</td>
+                    <td> </td>
                   {% endif %}
                 {% endfor %}
               </tr>
