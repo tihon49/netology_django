@@ -1,6 +1,7 @@
 import csv
 from django.core.management.base import BaseCommand
 from phones.models import Phone
+from main import settings
 
 
 
@@ -9,7 +10,7 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **options):
-        with open('../../../phones.csv', 'r') as csvfile:
+        with open(settings.PHONES, 'r') as csvfile:
             phone_reader = csv.reader(csvfile, delimiter=';')
             # пропускаем заголовок
             next(phone_reader)
@@ -21,7 +22,8 @@ class Command(BaseCommand):
                     price = line[3],
                     image = line[2],
                     release_date = line[4],
-                    lte_exists = line[5]
+                    lte_exists = line[5],
+                    slug = ''
                 )
                 new_phone.get_slug()
                 new_phone.save()
