@@ -15,3 +15,7 @@
 .price {
     font-weight: bold;
 }
+
+li {
+    margin-left: 30px;
+}
