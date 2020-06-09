@@ -25,7 +25,7 @@ class Phone(models.Model):
         db_index=True,)
     price = models.DecimalField(
         max_digits=7,
-        decimal_places=2,)
+        decimal_places=0,)
     image = models.ImageField(upload_to=None)
     release_date = models.DateField()
     lte_exists = models.BooleanField(default=False)

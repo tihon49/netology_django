@@ -19,7 +19,7 @@ class Command(BaseCommand):
             for line in phone_reader:
                 new_phone = Phone(
                     name = line[1],
-                    price = line[3],
+                    price = int(line[3]),
                     image = line[2],
                     release_date = line[4],
                     lte_exists = line[5],

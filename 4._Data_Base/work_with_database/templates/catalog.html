@@ -10,10 +10,48 @@
 
         <div class="sort-block">
             {# Здесь должен быть раздел с сортировкой #}
+            <nav class="navbar navbar-expand-lg" style="padding-left: 0px">
+              Сортировать по:
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#"> названию <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"> начиная с дешвых </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"> начиная с дорогих </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+
         </div>
 
-        <div class="content">
+
+        <div class="row">
+
             {# Здесь должен отображаться каталог с телефонами #}
+            {% for phone in response %}
+                <div style="width: 18rem; margin-bottom: 60px;" class="col-6">
+                  <div class="card-body" style="padding: 0px;">
+                    <p class="card-text" style="font-size: 30px; font-weight: bold;">
+                        <a href="{{ phone.slug }}">{{ phone.name }}</a>
+                    </p>
+                  </div>
+                  <div class="card-price" style="font-weight: bold;">
+                      <p class="card-price">Стоимость: {{ phone.price }}p.</p>
+                  </div>
+                  <img class="col-4" src="{{ phone.image }}" class="card-img-top" alt="#">
+                </div>
+            {% endfor %}
+
+
+
         </div>
     </div>
 {% endblock %}
