@@ -11,6 +11,16 @@ def show_catalog(request):
     for p in Phone.objects.all():
         context['response'].append(p)
 
+    if request.GET.get('sort') == 'name':
+        context['response'].append(Phone(name = 'TEST',
+                                         price = 77777,
+                                         image = '',
+                                         release_date = '1985-12-11',
+                                         lte_exists = True,
+                                         slug = ''
+                                    ))
+        return render(request, template, context)
+
     return render(request, template, context)
 
 
