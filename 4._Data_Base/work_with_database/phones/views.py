@@ -1,6 +1,6 @@
 from django.shortcuts import render
-
 from phones.models import Phone
+
 
 
 def show_catalog(request):
@@ -12,36 +12,31 @@ def show_catalog(request):
         context['response'].append(p)
 
     if request.GET.get('sort') == 'name':
-        context['response'].append(Phone(name = 'TEST',
-                                         price = 77777,
-                                         image = '',
-                                         release_date = '1985-12-11',
-                                         lte_exists = True,
-                                         slug = ''
-                                    ))
-        return render(request, template, context)
+        context['response'] = Phone.objects.order_by('name')
+
+    elif request.GET.get('sort') == 'cheap':
+        context['response'] = Phone.objects.order_by('price')
+
+    elif request.GET.get('sort') == 'expensive':
+        context['response'] = Phone.objects.order_by('-price')
 
     return render(request, template, context)
+
 
 
 def show_product(request, slug):
     template = 'product.html'
-    context = {
-        'name': Phone.name,
-    }
+
+    for phone in Phone.objects.all():
+        if phone.slug == slug:
+            description = f'Some info about the current phone: {phone.name}'
+            context = {'name': phone.name,
+                       'price': phone.price,
+                       'description': description,
+                       'image': phone.image,
+                       'release_date': phone.release_date,
+                       'lte_exists': phone.lte_exists,
+                       'slug': phone.slug
+                       }
+
     return render(request, template, context)
-
-
-
-# TODO: реализовать что-то похожее:
-'''
-def index(request):
-    # Реализуйте логику подсчета количества переходов с лендига по GET параметру from-landing
-    if request.GET.get('from-landing') == 'original':
-        counter_click['original'] += 1
-        print(counter_click)
-    elif request.GET.get('from-landing') == 'test':
-        counter_click['test'] += 1
-        print(counter_click)
-    return render_to_response('index.html')
-'''

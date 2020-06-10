@@ -8,6 +8,23 @@
             <h1>Телефон</h1>
         </div>
         <div class="content">
+            <div class="row">
+
+                {# Здесь должна отображаться информация о телефоне #}
+                <div style="width: 18rem;" class="col-6">
+                  <div class="card-body" style="padding: 0px;">
+                    <p class="card-text" style="font-size: 30px; font-weight: bold;">
+                        <a href="{{ phone.slug }}">{{ name }}</a>
+                    </p>
+                  </div>
+                  <div class="card-price" style="font-weight: bold;">
+                      <p class="card-price">Стоимость: {{ price }}p.</p>
+                      <p class="card-description">{{ description }}</p>
+                  </div>
+                  <img class="col-4" src="{{ image }}" class="card-img-top" alt="#">
+                </div>
+
+            </div>
 
         </div>
     </div>
