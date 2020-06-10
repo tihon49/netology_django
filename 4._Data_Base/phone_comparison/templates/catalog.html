@@ -7,5 +7,78 @@
         <div class="header">
             <h1>Сравнение телефонов</h1>
         </div>
+        <table class="row">
+            <tr>
+                <td class="col-2" style="padding-left: 0px">Модель:</td>
+                {% for phone in phones %}
+                    <th class="col-2">{{ phone.name }}</th>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td class="col-2" style="padding-left: 0px">Стоимость:</td>
+                {% for phone in phones %}
+                    <td class="col-2">{{ phone.price }}</td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td class="col-2" style="padding-left: 0px">Операционная система:</td>
+                {% for phone in phones %}
+                    <td class="col-2">{{ phone.system }}</td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td class="col-2" style="padding-left: 0px">Оперативная память:</td>
+                {% for phone in phones %}
+                    <td class="col-2">{{ phone.ram }}</td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td class="col-2" style="padding-left: 0px">Число пикселей на дюйм:</td>
+                {% for phone in phones %}
+                    <td class="col-2">{{ phone.pixel }}</td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td class="col-2" style="padding-left: 0px">Двойная камера:</td>
+                {% for phone in phones %}
+                    {% if phone.double_camera %}
+                        <td class="col-2">Есть</td>
+                    {% else %}
+                        <td class="col-2"> - </td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td class="col-2" style="padding-left: 0px">Процессор:</td>
+                {% for phone in phones %}
+                    <td class="col-2">{{ phone.cpu }}</td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td class="col-2" style="padding-left: 0px">Разрешение экрана:</td>
+                {% for phone in phones %}
+                    <td class="col-2">{{ phone.screen }}</td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td class="col-2" style="padding-left: 0px">Дополнительно:</td>
+                {% for phone in phones %}
+                    <td class="col-2">{{ phone.additionally }}</td>
+                {% endfor %}
+            </tr>
+
+        </table>
     </div>
 {% endblock %}
+
+<!--TODO-->
+<!--у "дополнительно" сделать split(',')-->
+<!--и перенос по строкам-->
