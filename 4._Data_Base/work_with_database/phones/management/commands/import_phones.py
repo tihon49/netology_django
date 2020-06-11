@@ -27,4 +27,3 @@ class Command(BaseCommand):
                 )
                 new_phone.get_slug()
                 new_phone.save()
-

@@ -29,12 +29,9 @@
                 </ul>
               </div>
             </nav>
-
         </div>
 
-
         <div class="row">
-
             {# Здесь должен отображаться каталог с телефонами #}
             {% for phone in response %}
                 <div style="width: 18rem; margin-bottom: 60px;" class="col-6">
@@ -49,9 +46,6 @@
                   <img class="col-4" src="{{ phone.image }}" class="card-img-top" alt="#">
                 </div>
             {% endfor %}
-
-
-
         </div>
     </div>
 {% endblock %}

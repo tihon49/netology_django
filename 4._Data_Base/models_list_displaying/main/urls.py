@@ -17,7 +17,7 @@ from datetime import datetime, date
 from django.contrib import admin
 from django.urls import path, register_converter
 from books.views import books_view
-from models_list_displaying.books.views import date_view, home_view
+from books.views import date_view, home_view
 
 
 class Date_convertor:
