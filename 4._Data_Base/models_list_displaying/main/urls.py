@@ -13,12 +13,28 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from datetime import datetime, date
 from django.contrib import admin
-from django.urls import path
-
+from django.urls import path, register_converter
 from books.views import books_view
+from models_list_displaying.books.views import date_view, home_view
+
+
+class Date_convertor:
+    regex = '[0-9]{4}-[0-9]{2}-[0-9]{2}'
+    def to_python(self, value: str) -> date:
+        return datetime.strptime(value, '%Y-%m-%d').date()
+
+    def to_url(self, value: date) -> str:
+        return value.strftime('%Y-%m-%d')
+
+register_converter(Date_convertor, 'dt')
+
+
 
 urlpatterns = [
-    path('', books_view, name='books'),
+    path('', home_view, name='home'),
+    path('books/', books_view, name='books'),
+    path('books/<dt:date>/', date_view, name='date'),
     path('admin/', admin.site.urls),
 ]

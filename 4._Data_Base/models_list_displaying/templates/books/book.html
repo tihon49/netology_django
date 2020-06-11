@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог книг{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1>Инфо по книге {{ book.name }}</h1>
+        </div>
+        <div class="row">
+            <div class="book col-md-4">
+                <h2>{{ book.name }}</h2>
+                <p>Автор: {{ book.author }}</p>
+                <p>Дата публикации: {{ book.pub_date|date:'Y-m-d' }}</p>
+            </div>
+<!--                {% if prev_page %}-->
+<!--                    <button><a href="{{ prev_page }}">{{ prev_page }}</a></button>-->
+<!--                {% endif %}-->
+<!--                {% if next_page %}-->
+<!--                    <button><a href="{{ next_page }}">{{ next_page }}</a></button>-->
+<!--                {% endif %}-->
+
+            <div class="col-md-4">
+                <p>более ранние</p>
+                {% for i in books %}
+                    {% if i.pub_date < book.pub_date%}
+                        <br>
+                        <a href="/books/{{ i.pub_date|date:'Y-m-d' }}">
+                            <button style="width: 150px">{{ i.pub_date|date:'Y-m-d' }}</button>
+                        </a>
+
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-md-4">
+                <p>более поздние</p>
+                {% for i in books %}
+                    {% if i.pub_date > book.pub_date %}
+                        <br>
+                        <a href="/books/{{ i.pub_date|date:'Y-m-d' }}">
+                            <button style="width: 150px">{{ i.pub_date|date:'Y-m-d' }}</button>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+
+                <a href="/books">
+                    <button style="border-radius: 10px;width: 200px;height:50px">
+                        вернуться в каталог
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
