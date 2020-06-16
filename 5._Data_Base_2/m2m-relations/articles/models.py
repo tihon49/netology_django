@@ -1,12 +1,14 @@
 from django.db import models
 
 
-class Article(models.Model):
 
+#класс статьи
+class Article(models.Model):
     title = models.CharField(max_length=256, verbose_name='Название', db_index=True)
     text = models.TextField(verbose_name='Текст')
     published_at = models.DateTimeField(verbose_name='Дата публикации')
     image = models.ImageField(null=True, blank=True, verbose_name='Изображение',)
+    scopes = models.ManyToManyField('Section', through='ArticleSection')
 
     class Meta:
         verbose_name = 'Статья'
@@ -17,20 +19,21 @@ class Article(models.Model):
 
 
 
-class ArticleThematic(models.Model):
+#промежуточный класс
+class ArticleSection(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
-    thematic_section = models.ForeignKey('Thematic_section', on_delete=models.CASCADE)
-    isMain = models.BooleanField(default=False)
+    section = models.ForeignKey('Section', on_delete=models.CASCADE)
+    is_main = models.BooleanField(verbose_name='Основной раздел')
 
 
 
-class Thematic_section(models.Model):
-    name = models.CharField(max_length=35)
-    articles = models.ManyToManyField(
-        Article,
-        through=ArticleThematic,
-        related_name='sections'
-    )
+#класс тематики
+class Section(models.Model):
+    name = models.CharField(max_length=256, verbose_name='Наименование раздела')
+
+    class Meta:
+        verbose_name = 'Раздел'
+        verbose_name_plural = 'Разделы'
 
     def __str__(self):
         return self.name
