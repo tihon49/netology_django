@@ -13,9 +13,16 @@ class Teacher(models.Model):
         return self.name
 
 
+
+class StudentTeacher(models.Model):
+    student = models.ForeignKey('Student', on_delete=models.CASCADE)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+
+
+
 class Student(models.Model):
     name = models.CharField(max_length=30, verbose_name='Имя')
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    teacher = models.ManyToManyField(Teacher, through=StudentTeacher)
     group = models.CharField(max_length=10, verbose_name='Класс')
 
     class Meta:
