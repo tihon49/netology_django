@@ -13,6 +13,7 @@ class Genre(models.Model):
         return self.name
 
 
+
 class Author(models.Model):
 
     name = models.CharField(max_length=256, verbose_name='Имя')
@@ -24,6 +25,7 @@ class Author(models.Model):
 
     def __str__(self):
         return self.name
+
 
 
 class Article(models.Model):
