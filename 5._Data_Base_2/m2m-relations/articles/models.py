@@ -8,7 +8,7 @@ class Article(models.Model):
     text = models.TextField(verbose_name='Текст')
     published_at = models.DateTimeField(verbose_name='Дата публикации')
     image = models.ImageField(null=True, blank=True, verbose_name='Изображение',)
-    scopes = models.ManyToManyField('Section', through='ArticleSection')
+    scopes = models.ManyToManyField('Section', through='ArticleSection', related_name='relations')
 
     class Meta:
         verbose_name = 'Статья'
