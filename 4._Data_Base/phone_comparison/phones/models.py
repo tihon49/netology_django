@@ -13,7 +13,7 @@ class Phone(models.Model):
     cpu = models.CharField(max_length=50)
     screen = models.CharField(max_length=12)
     fm = models.BooleanField(default=False)
-    additionally = models.TextField(null=True, blank=False)
+    additionally = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
