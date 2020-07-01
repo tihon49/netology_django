@@ -18,7 +18,7 @@ class Car(models.Model):
 
 class Review(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, default='')
     text = models.TextField()
 
     def __str__(self):
