@@ -5,7 +5,7 @@ from .forms import ReviewAdminForm
 
 
 class CarAdmin(admin.ModelAdmin):
-    list_display = ('brand', 'model', 'review_count')
+    list_display = ('brand', 'model', 'review_count', 'id')
     list_filter = ('brand', 'id', 'model')
     search_fields = ['brand', 'model']
 
