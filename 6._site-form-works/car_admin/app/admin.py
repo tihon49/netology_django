@@ -13,9 +13,14 @@ class CarAdmin(admin.ModelAdmin):
 class ReviewAdmin(admin.ModelAdmin):
     form = ReviewAdminForm
     list_display = ('car', 'title')
+    list_filter = ('car__brand', 'car__model', 'car__id')
     search_fields = ['car__model', 'title']
+    # radio_fields = {'car': admin.VERTICAL}
+
 
 
 
 admin.site.register(Car, CarAdmin)
 admin.site.register(Review, ReviewAdmin)
+admin.site.site_title = 'Car_admin'
+admin.site.site_header = 'Car administration'
