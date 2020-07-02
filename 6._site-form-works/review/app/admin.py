@@ -13,3 +13,6 @@ class ReviewAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Review, ReviewAdmin)
+
+
+admin.site.site_header = 'Обзор столов и стульев'

@@ -1,3 +1,5 @@
+from pprint import pprint
+
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 
@@ -26,6 +28,9 @@ def product_view(request, pk):
         if str(i.product.name) == str(Product.objects.all().get(name=product)):
             product_review_list.append(i.text)
 
+    if 'commited' not in request.session:
+        request.session['commited'] = []
+
     context = {
         'form': form,
         'product': product,
@@ -37,10 +42,17 @@ def product_view(request, pk):
 
     if request.method == 'POST':
         # логика для добавления отзыва
-        review = Review()
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            review.product = product
-            review.text = form.cleaned_data.get("text")
-            review.save()
-        return redirect('main_page')
+        if product.id not in request.session['commited']:
+            review = Review()
+            form = ReviewForm(request.POST)
+
+            if form.is_valid():
+                review.product = product
+                review.text = form.cleaned_data.get("text")
+                review.save()
+                request.session['commited'].append(product.id)
+                request.session.save()
+        else:
+            pass
+
+        return redirect(request.path)
