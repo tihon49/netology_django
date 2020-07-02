@@ -34,10 +34,13 @@ def product_view(request, pk):
     context = {
         'form': form,
         'product': product,
-        'product_review': product_review_list
+        'product_review': product_review_list,
     }
 
     if request.method == 'GET':
+        if product.id in request.session['commited']:
+            context['is_review_exist'] = True
+
         return render(request, template, context)
 
     if request.method == 'POST':
@@ -52,7 +55,5 @@ def product_view(request, pk):
                 review.save()
                 request.session['commited'].append(product.id)
                 request.session.save()
-        else:
-            pass
 
         return redirect(request.path)

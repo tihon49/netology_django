@@ -8,6 +8,7 @@
 
     {% if user.is_authenticated %}
         <h4>Отзывы:</h4>
+        <p>{{ reviewd }}</p>
         <ul>
             {% for review in reviews %}
                 <li><p>{{review.text}}</p></li>
@@ -18,19 +19,19 @@
                 <p>Отзыв от вас уже есть</p>
             {% else %}
                 <p>Можете добавить отзыв</p>
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form }}
+                    <br>
+                    <input type="submit" value="Отправить отзыв"/>
+                </form>
+
             {% endif %}
-
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{ form }}
-            <br>
-            <input type="submit" value="Отправить отзыв"/>
-
-        </form>
     {% else %}
         <h4>Чтобы оставлять отзывы необходимо авторизоваться</h4>
     {% endif %}
-    <!--вывод отзывово на данный продукт-->
+    <!--вывод отзывов на данный продукт-->
     <ul>
         {% for review in product_review %}
             <li>{{ review }}</li>
