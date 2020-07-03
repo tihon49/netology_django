@@ -14,6 +14,7 @@ class Car(models.Model):
     class Meta:
         verbose_name = u'Машина'
         verbose_name_plural = u'Машины'
+        ordering = ['id']
 
 
 class Review(models.Model):
@@ -27,4 +28,5 @@ class Review(models.Model):
     class Meta:
         verbose_name = 'Обзор'
         verbose_name_plural = 'Обзоры'
+        ordering = ['id']
 
