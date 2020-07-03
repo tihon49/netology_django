@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Car(models.Model):
     brand = models.CharField('Марка', max_length=50)
     model = models.CharField('Модедь', max_length=50)
@@ -15,6 +16,7 @@ class Car(models.Model):
         verbose_name = u'Машина'
         verbose_name_plural = u'Машины'
         ordering = ['id']
+
 
 
 class Review(models.Model):
