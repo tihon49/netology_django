@@ -7,11 +7,7 @@ def home(request):
     if request.user.is_authenticated:
         context['username'] = request.user.get_username()
 
-    return render(
-        request,
-        'home.html',
-        context=context
-    )
+    return render(request, 'home.html', context=context)
 
 
 def signup(request):
@@ -22,11 +18,7 @@ def signup(request):
         if f.is_valid():
             f.save()
             return redirect('home')
-    return render(
-        request,
-        'signup.html',
-        context=data
-    )
+    return render(request, 'signup.html', context=data)
 
 
 def thanks(request):
