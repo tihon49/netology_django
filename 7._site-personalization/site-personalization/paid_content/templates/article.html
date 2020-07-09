@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{name}}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h3>{{name}}</h3>
+            {% if image %}<img src="/static/{{image}}" alt="" width="150px">{% endif %}
+            {% if need_subscribe %} Пожалуйста <a href="{% url 'subscribe'%}">купите подписку</a>{% endif %}
+            <p>{{text}}</p>
+        </div>
+    </div>
+{% endblock %}
