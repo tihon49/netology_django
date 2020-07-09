@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Угадай число{% endblock %}
+
+{% block content %}
+    {% if try_count %} <!--- если число угадано --->
+        {% if master %}
+            <h3>Число отгадано за {{ try_count }} попыток</h3>
+        {% else %}
+            <h3>Поздравляем! Вы угадали! Это число {{ true_num }}</h3>
+        {% endif %}
+    {% endif %}
+
+    {% if random_num %}  <!--- блок для мастера игры --->
+        <h3>Вы загадали число {{ random_num }}</h3>
+    {% endif %}
+
+    {% if form %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+        </form>
+    {% endif %}
+    {% if message %}
+        {{ message }}
+    {% endif %}
+{% endblock %}

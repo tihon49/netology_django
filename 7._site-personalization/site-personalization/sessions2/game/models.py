@@ -8,7 +8,7 @@ class Player(models.Model):
 class Game(models.Model):
     players = models.ManyToManyField(Player, related_name='games')
     is_active = models.BooleanField(default=True)
-    owner = models.ForeignKey(Player, on_delete=models.CASCADE, default=None)
+    master = models.ForeignKey(Player, on_delete=models.CASCADE, default=None)
     is_finished = models.BooleanField(default=False)
     try_count = models.IntegerField(default=0)
     num = models.IntegerField(default=0)
