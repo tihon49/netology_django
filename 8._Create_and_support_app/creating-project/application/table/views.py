@@ -10,6 +10,7 @@ from table.models import CSVFile, Table
 
 def table_view(request):
     template = 'table.html'
+    # здесь путь берется под винду. Можно поменять если что.
     path = str(CSVFile.objects.first().get_path()).split('\\')[-1]
     columns = Table.objects.order_by('number')
 
