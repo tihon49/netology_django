@@ -1,0 +1,4 @@
+id;name;price;release_date;lte_exists
+1;Samsung A5 2016;23000;2016-12-11;True;
+2;Iphone 7;65000;2018-06-01;True;
+3;Xiaomi MI;20000;2020-01-20;False;
