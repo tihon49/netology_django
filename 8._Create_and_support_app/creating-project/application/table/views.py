@@ -6,14 +6,6 @@ from django.shortcuts import render
 from app import settings
 from table.models import CSVFile, Table
 
-# CSV_FILENAME = 'phones.csv'
-# COLUMNS = [
-#     {'name': 'id', 'width': 1},
-#     {'name': 'name', 'width': 3},
-#     {'name': 'price', 'width': 2},
-#     {'name': 'release_date', 'width': 2},
-#     {'name': 'lte_exists', 'width': 1},
-# ]
 
 
 def table_view(request):
