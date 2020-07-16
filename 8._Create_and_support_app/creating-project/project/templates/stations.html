@@ -6,7 +6,7 @@
         Для запуска на сервере, укажите свой API-ключ. Тестовый ключ НЕ БУДЕТ работать на других сайтах.
         Получить ключ можно в Кабинете разработчика: https://developer.tech.yandex.ru/keys/
     -->
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<ваш API-ключ>" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=c2f00c67-380f-4bc5-96b1-3ce7bab87358" type="text/javascript"></script>
     <script type="text/javascript">
       ymaps.ready(init);
 
@@ -46,6 +46,13 @@
             </div>
             <div class="col-md-4 form-top">
                 <input type="submit" value="Показать" class="btn btn-outline-primary"/>
+            </div>
+            <div class="stations_list">
+                {% if stations %}
+                    {% for station in stations %}
+                        <h5>{{ station.name }}</h5>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </form>

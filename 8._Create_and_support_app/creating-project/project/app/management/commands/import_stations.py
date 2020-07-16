@@ -27,12 +27,7 @@ class Command(BaseCommand):
                 station.longitude = float(line[2])
                 station.latitude = float(line[3])
                 station.save()
-                # pprint(line)
-                #
-                # if count >= 5:
-                #     break
-                #
-                # station = Station.objects.get(name=line[1])
+
                 for route in line[7].split('; '):
                     try:
                         new_route = Route.objects.get(name=route)
@@ -41,4 +36,3 @@ class Command(BaseCommand):
 
                     station.routes.add(new_route)
                 print(f'доабвлена станция {station.name}')
-                    # pprint(new_route)

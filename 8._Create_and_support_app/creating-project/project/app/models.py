@@ -25,4 +25,4 @@ class Route(models.Model):
 
     class Meta:
         verbose_name = 'Номер маршрута'
-        verbose_name_plural = 'Номера маршрутов'
+        verbose_name_plural = 'Номера маршрутов '
