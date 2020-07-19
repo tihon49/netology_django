@@ -4,8 +4,8 @@ from django.db import models
 
 class Station(models.Model):
     name = models.CharField('Имя', max_length=100)
-    latitude = models.CharField(max_length=200)
-    longitude = models.CharField(max_length=200)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
     routes = models.ManyToManyField('Route', related_name = "stations", verbose_name='Номер маршрута')
 
     def __str__(self):

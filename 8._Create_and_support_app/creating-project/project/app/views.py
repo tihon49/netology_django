@@ -18,8 +18,8 @@ class StationsView(View):
             stations = current_route.stations.all()     #список объектов станций на данном маршруте
             context['stations'] = stations
             context['center'] = {
-                'x': str(stations.aggregate(Avg('longitude'))['longitude__avg']).replace(',', '.'),
-                'y': str(stations.aggregate(Avg('latitude'))['latitude__avg']).replace(',', '.')
+                'x': stations.aggregate(Avg('longitude'))['longitude__avg'],
+                'y': stations.aggregate(Avg('latitude'))['latitude__avg']
             }
         # print(context['stations'])
         # print('\n', context['center'])
