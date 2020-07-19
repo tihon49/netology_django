@@ -5,8 +5,10 @@ from app.models import Station, Route
 
 @admin.register(Station)
 class StationAdmin(admin.ModelAdmin):
-    # save_on_top = True
-    pass
+    list_display = ['id', 'name', 'latitude', 'longitude']
+    list_display_links = ['id', 'name']
+    ordering = ['id']
+    search_fields = ['name']
 
 
 

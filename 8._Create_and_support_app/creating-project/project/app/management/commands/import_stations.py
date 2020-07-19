@@ -17,10 +17,10 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         file = 'moscow_bus_stations.csv'
         with open(os.path.join(settings.BASE_DIR, file), 'r', encoding='cp1251') as csvfile:
-            station_reader = csv.reader(csvfile, delimiter=';')
-            next(station_reader)
+            reader = csv.reader(csvfile, delimiter=';')
+            next(reader)
             # count = 0
-            for line in station_reader:
+            for line in reader:
                 # count += 1
                 station = Station()
                 station.name = line[1]
@@ -36,3 +36,6 @@ class Command(BaseCommand):
 
                     station.routes.add(new_route)
                 print(f'доабвлена станция {station.name}')
+                print(f'latitude {station.latitude} : longitude {station.longitude}')
+        print(f'Всего доабавлено станций: {Station.objects.count()}')
+        print(f'Всего добоавлено маршрутов: {Route.objects.count()}')
