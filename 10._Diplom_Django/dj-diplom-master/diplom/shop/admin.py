@@ -1,3 +1,14 @@
 from django.contrib import admin
 
-# Register your models here.
+from shop.models import Phone, SummerWear
+
+
+
+@admin.register(Phone)
+class PhoneAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(SummerWear)
+class PhoneAdmin(admin.ModelAdmin):
+    pass
