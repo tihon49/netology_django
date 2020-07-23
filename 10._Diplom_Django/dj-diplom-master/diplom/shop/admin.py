@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from shop.models import Phone, SummerWear
+from shop.models import Phone, SummerWear, Review
 
 
 
@@ -11,4 +11,9 @@ class PhoneAdmin(admin.ModelAdmin):
 
 @admin.register(SummerWear)
 class PhoneAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Review)
+class CommentAdmin(admin.ModelAdmin):
     pass

@@ -8,5 +8,6 @@ from shop import views
 
 urlpatterns = [
     path('', views.base_view, name='base_view'),
-    path('phone/', views.phone_view, name='phone_view'),
+    path('phone/<int:item_id>', views.phone_view, name='phone_view'),
+    path('empty_section/', views.empty_view, name='empty_section'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

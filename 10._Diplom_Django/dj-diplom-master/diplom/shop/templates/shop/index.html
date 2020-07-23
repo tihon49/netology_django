@@ -19,7 +19,7 @@
         <div class="col-md-4">
           <h2>{{ phone.name }}</h2>
 
-          <a href="{% url 'phone_view' %}">
+          <a href="{% url 'phone_view' phone.id %}">
             <img src="{{ phone.image.url }}" width="180">
           </a>
 
@@ -48,7 +48,7 @@
         <div class="col-md-4">
           <h2>{{ item.name }}</h2>
   
-          <a href="./phone.html">
+          <a href="{{ item.slug }}">
   
             <img src="{{ item.image.url }}" width="180">
   
