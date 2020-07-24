@@ -49,14 +49,31 @@
 
 
     </ul>
+    <div style="padding-right: 20px; color: white">
+      {% if user.is_authenticated %}
+        Привет {{ user }}
+      {% else %}
+        Привет гость
+      {% endif %}
+
+    </div>
     <a class="btn btn-outline-success my-2 my-sm-0" role="button"
        href="./cart.html">
-      Корзина</a>
+      Корзина
+    </a>
 
+    {% if not user.is_authenticated %}
+      <a class="btn btn-outline-success my-2 my-sm-0" role="button"
+         href="{% url 'login' %}">
+         Войти
+      </a>
+    {% else %}
+      <a class="btn btn-outline-success my-2 my-sm-0" role="button"
+         href="{% url 'login' %}">
+         Выйти
+      </a>
+    {% endif %}
 
-    <a class="btn btn-outline-success my-2 my-sm-0" role="button"
-       href="./login.html">
-      Войти</a>
 
   </div>
 </nav>
