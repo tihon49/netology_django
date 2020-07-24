@@ -13,40 +13,47 @@ def base_view(request):
 	return render(request, 'shop/index.html', context)
 
 
+
 def phone_view(request, item_id):
-	'''обзор телефона'''
+	'''страница обзора выбранного телефона'''
 	user_session = request.session.session_key
 	if not user_session:
 		request.session.cycle_key()
 		user_session = request.session.session_key
 
 	phone = get_object_or_404(Phone, id=item_id)
-	form = ReviewForm()
+	form = ReviewForm() # форма добавления комментария из forms.py
 	context = {'phone': phone}
 	context['form'] = form
 	context['user_session'] = user_session
 	print('GET запрос:', request.session.session_key)
 
+	# отображение отзывов, если они есть
 	for review in phone.reviews.all():
 		if review.session_id == user_session:
 			context['reviewd'] = True
 			break
 
-
 	# добавление комментария
 	if request.method == 'POST':
-		form = ReviewForm(request.POST)
-		if form.is_valid:
-			print('form is valid')
-			print(request.POST)
-			Review.objects.create(phone = Phone.objects.get(id=item_id),
-								  name = request.POST.get('name'),
-								  text = request.POST.get('text'),
-								  star = request.POST.get('stars'),
-								  session_id = user_session
-								  )
-			return redirect('phone_view', item_id=item_id)
+		# костыль обойти ошибку при отзыве
+		# без выбора количества звезд
+		if request.POST.get('stars'):
+			form = ReviewForm(request.POST)
+			if form.is_valid:
+				print('form is valid')
+				print(request.POST)
+				Review.objects.create(phone = Phone.objects.get(id=item_id),
+									  name = request.POST.get('name'),
+									  text = request.POST.get('text'),
+									  star = request.POST.get('stars'),
+									  session_id = user_session
+									  )
+				return redirect('phone_view', item_id=item_id)
+		else:
+			pass
 	return render(request, 'shop/phone.html', context)
+
 
 
 def empty_view(request):
