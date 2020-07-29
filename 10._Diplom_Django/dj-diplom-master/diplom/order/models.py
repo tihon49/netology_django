@@ -36,6 +36,7 @@ class Order(models.Model):
 
 
 class ItemInOrder(models.Model):
+    '''Модель товара в заказе'''
     order = models.ForeignKey(Order, blank=True, null=True, on_delete=models.CASCADE, verbose_name='Заказ')
     item = models.ForeignKey(Item, blank=True, null=True, on_delete=models.CASCADE, verbose_name='Товар')
     count = models.IntegerField('Количество', default=1)
@@ -60,9 +61,10 @@ class ItemInOrder(models.Model):
 # source: https://www.youtube.com/watch?v=3wFpyKcVT_w&list=PLSWnD6rL-m9adebgpvvOLH5ASGJiznWdg&index=7
 # 17:25
 def item_in_order_post_save(sender, instance, created, **kwargs):
+    '''функция перезаписи данных в модели товара в заказе'''
     all_items_in_order = ItemInOrder.objects.filter(order=instance.order)
-
     order_total_price = 0
+
     for item in all_items_in_order:
         order_total_price += item.total_price
 
