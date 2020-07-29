@@ -6,6 +6,18 @@ from .forms import ReviewForm, CreateUserForm
 
 
 
+# Получаем имя пользователя (если авторизован) или его ID сессии
+def get_session_id(request):
+    if not request.user.is_authenticated:
+        user_session = request.session.session_key
+        if not user_session:
+            user_session = request.session.cycle_key()
+    else:
+        user_session = request.user.username
+    return user_session
+
+
+
 def base_view(request):
 	'''главная страница'''
 	phones = Item.objects.filter(category=1)
@@ -13,7 +25,9 @@ def base_view(request):
 	categories = Category.objects.all()
 	context = {'phones': phones,
 			   'wear': wear,
-			   'categories': categories}
+			   'categories': categories,
+			   'user_session': get_session_id(request)}
+
 	return render(request, 'shop/index.html', context)
 
 
@@ -29,8 +43,7 @@ def item_view(request, item_id):
 	form = ReviewForm() # форма добавления комментария из forms.py
 	context = {'item': item}
 	context['form'] = form
-	context['user_session'] = user_session
-	print('GET запрос:', request.session.session_key)
+	# context['user_session'] = user_session
 
 	# отображение отзывов, если они есть
 	for review in item.reviews.all():

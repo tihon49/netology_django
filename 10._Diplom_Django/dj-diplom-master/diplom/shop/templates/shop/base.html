@@ -58,8 +58,9 @@
       {% endif %}
 
     </div>
+
     <a class="btn btn-outline-success my-2 my-sm-0" role="button"
-       href="./cart.html">
+       href="{% url 'cart' user_name=user %}">
       Корзина
     </a>
 

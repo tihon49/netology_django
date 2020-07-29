@@ -22,9 +22,12 @@ class Status(models.Model):
 
 class Order(models.Model):
     '''Модель заказа'''
-    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
-    status = models.ForeignKey(Status, verbose_name='Статус', on_delete=models.CASCADE, default=None)
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE, blank=True, null=True)
+    status = models.ForeignKey(Status, verbose_name='Статус', on_delete=models.CASCADE,
+                               default=None, blank=True, null=True)
     total_price = models.DecimalField('Итоговая цена заказа', max_digits=10, decimal_places=2, default=0)
+    total_items_count = models.IntegerField('Общее количество товаров в заказе', default=0)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Заказ'
@@ -64,12 +67,14 @@ def item_in_order_post_save(sender, instance, created, **kwargs):
     '''функция перезаписи данных в модели товара в заказе'''
     all_items_in_order = ItemInOrder.objects.filter(order=instance.order)
     order_total_price = 0
+    total_items_count_in_order = 0
 
     for item in all_items_in_order:
         order_total_price += item.total_price
+        total_items_count_in_order += item.count
 
     instance.order.total_price = order_total_price
+    instance.order.total_items_count = total_items_count_in_order
     instance.order.save(force_update=True)
-
 
 post_save.connect(item_in_order_post_save, sender=ItemInOrder)

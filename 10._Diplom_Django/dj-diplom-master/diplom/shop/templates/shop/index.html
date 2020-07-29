@@ -23,7 +23,7 @@
             <img src="{{ phone.image.url }}" width="180">
           </a>
 
-          <form method="post" action="">
+          <form method="post" action="{% url 'add_item_to_cart' item_id=phone.id user=user_session %}">
             {% csrf_token %}
             <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">
           </form>
