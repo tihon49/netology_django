@@ -3,17 +3,18 @@ from django.db import models
 
 
 
-class Phone(models.Model):
-    '''Модель телефона'''
+class Item(models.Model):
+    '''Модель товара'''
     name = models.CharField('Название', max_length=250)
     slug = models.SlugField(max_length=1000, null=True, blank=True)
+    category = models.ForeignKey('Category', verbose_name='Категория товара', on_delete=models.CASCADE, blank=True, null=True)
     description = models.CharField('Краткое описание', max_length=250, blank=True)
     price = models.DecimalField('Цена', max_digits=20, decimal_places=2)
     image = models.ImageField('Изображение')
 
     class Meta:
-        verbose_name = 'Телефон'
-        verbose_name_plural = 'Телефоны'
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
         ordering = ['price']
 
     def __str__(self):
@@ -21,18 +22,13 @@ class Phone(models.Model):
 
 
 
-class SummerWear(models.Model):
-    '''Модель летней одежды'''
-    name = models.CharField('Название', max_length=250)
-    slug = models.SlugField(max_length=1000, null=True, blank=True)
-    description = models.CharField('Краткое описание', max_length=250, blank=True)
-    price = models.DecimalField('Цена', max_digits=20, decimal_places=2)
-    image = models.ImageField('Изображение')
+class Category(models.Model):
+    '''Класс категории товара'''
+    name = models.CharField('Название категории', max_length=250)
 
     class Meta:
-        verbose_name = 'К лету'
-        verbose_name_plural = 'К лету'
-        ordering = ['price']
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
 
     def __str__(self):
         return self.name
@@ -40,7 +36,8 @@ class SummerWear(models.Model):
 
 
 class Review(models.Model):
-    phone = models.ForeignKey(Phone, related_name='reviews', on_delete=models.CASCADE)
+    '''Модель отзыва к товару'''
+    item = models.ForeignKey(Item, related_name='reviews', on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField('Имя', max_length=250)
     text = models.TextField('Отзыв')
     star = models.IntegerField(null=True, blank=True)

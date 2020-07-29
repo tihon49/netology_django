@@ -19,11 +19,12 @@
         <div class="col-md-4">
           <h2>{{ phone.name }}</h2>
 
-          <a href="{% url 'phone_view' phone.id %}">
+          <a href="{% url 'item_view' phone.id %}">
             <img src="{{ phone.image.url }}" width="180">
           </a>
 
-          <form>
+          <form method="post" action="">
+            {% csrf_token %}
             <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">
           </form>
         </div>
@@ -44,11 +45,11 @@
     <!-- Example row of columns -->
     <div class="row">
 
-      {% for item in summer_wear %}
+      {% for item in wear %}
         <div class="col-md-4">
           <h2>{{ item.name }}</h2>
   
-          <a href="{{ item.slug }}">
+          <a href="{% url 'item_view' item.id %}">
   
             <img src="{{ item.image.url }}" width="180">
   

@@ -10,11 +10,11 @@
     <!-- Example row of columns -->
     <div class="row">
       <div class="col-md-12">
-        <h2>{{ phone.name }}</h2>
+        <h2>{{ item.name }}</h2>
 
-        <img src="{{ phone.image.url }}" width="120">
+        <img src="{{ item.image.url }}" width="120">
 
-        <p>{{ phone.description }}</p>
+        <p>{{ item.description }}</p>
 <!--        TODO: добавить добавление в корзину   -->
         <form method="post" action="./cart/">
           <input type="hidden" name="csrfmiddlewaretoken"
@@ -27,8 +27,8 @@
     <hr>
 
 <!--    блок вывода количества звезд и отзывов-->
-    {% if phone.reviews.count > 0 %}
-      {% for review in phone.reviews.all %}
+    {% if item.reviews.count > 0 %}
+      {% for review in item.reviews.all %}
         {{ review.star|get_stars }} {{ review.name }}<br>
         {{ review.text }}<br><br>
       {% endfor %}
@@ -43,7 +43,7 @@
         {% if not reviewd %}
           <h4>Оставте отзыв:</h4>
 
-          <form action="{% url 'phone_view' item_id=phone.id %}" method="post">
+          <form action="{% url 'item_view' item_id=item.id %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="btn btn-primary">Оставить</button>
