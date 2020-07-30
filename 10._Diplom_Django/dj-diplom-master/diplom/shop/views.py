@@ -41,9 +41,9 @@ def item_view(request, item_id):
 
 	item = get_object_or_404(Item, id=item_id)
 	form = ReviewForm() # форма добавления комментария из forms.py
-	context = {'item': item}
-	context['form'] = form
-	# context['user_session'] = user_session
+	context = {'item': item,
+			   'form': form,
+			   'user_session': get_session_id(request)}
 
 	# отображение отзывов, если они есть
 	for review in item.reviews.all():

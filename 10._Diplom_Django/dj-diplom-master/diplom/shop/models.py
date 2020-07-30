@@ -11,11 +11,13 @@ class Item(models.Model):
     description = models.CharField('Краткое описание', max_length=250, blank=True)
     price = models.DecimalField('Цена', max_digits=20, decimal_places=2)
     image = models.ImageField('Изображение')
+    created_date = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_date = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
-        ordering = ['price']
+        ordering = ['created_date']
 
     def __str__(self):
         return self.name

@@ -54,3 +54,9 @@ def confirm_order(request, order_id):
     order.is_active = False
     order.save()
     return redirect('base_view')
+
+
+
+def not_authenticated_user(request):
+    template = 'shop/not_authenticated_user.html'
+    return render(request, template)
