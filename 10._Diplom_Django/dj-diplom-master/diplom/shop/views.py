@@ -6,27 +6,29 @@ from .forms import ReviewForm, CreateUserForm
 
 
 
-# Получаем имя пользователя (если авторизован) или его ID сессии
+
 def get_session_id(request):
-    if not request.user.is_authenticated:
-        user_session = request.session.session_key
-        if not user_session:
-            user_session = request.session.cycle_key()
-    else:
-        user_session = request.user.username
-    return user_session
+	'''Получаем имя пользователя (если авторизован) или его ID сессии'''
+	if not request.user.is_authenticated:
+		user_session = request.session.session_key
+		if not user_session:
+			user_session = request.session.cycle_key()
+	else:
+		user_session = request.user.username
+	return user_session
 
 
 
 def base_view(request):
 	'''главная страница'''
-	phones = Item.objects.filter(category=1)
-	wear = Item.objects.filter(category=2)
+	phones = Item.objects.filter(category=1)[:3]
+	wear = Item.objects.filter(category=2)[:3]
 	categories = Category.objects.all()
 	context = {'phones': phones,
 			   'wear': wear,
 			   'categories': categories,
 			   'user_session': get_session_id(request)}
+	print(categories)
 
 	return render(request, 'shop/index.html', context)
 
