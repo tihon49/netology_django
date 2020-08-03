@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -114,6 +115,29 @@ def logout_view(request):
 	logout(request)
 	return redirect('login')
 
+
+
+def category_view(request, category_name):
+	current_category = Category.objects.get(name=category_name)
+	items_in_current_category = current_category.items.all()
+	template = 'shop/smartphones.html'
+
+	paginator = Paginator(items_in_current_category, 3)
+	current_page = int(request.GET.get('page', 1))
+	page_object = paginator.get_page(current_page)
+	prev_page, next_page = None, None
+
+	if page_object.has_next():
+		next_page = f'?page={page_object.next_page_number()}'
+	if page_object.has_previous():
+		prev_page = f'?page={page_object.previous_page_number()}'
+
+	context = {'category_items': page_object,
+			   'current_page': current_page,
+			   'prev_page_url': prev_page,
+			   'next_page_url': next_page}
+
+	return render(request, template, context)
 
 
 def empty_view(request):

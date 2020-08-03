@@ -25,7 +25,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdown01">
 
           {% for category in categories %}
-            <a class="dropdown-item" href="./smartphones.html">
+            <a class="dropdown-item" href="{% url 'category_view' category.name %}">
               {{ category }}
             </a>
           {% endfor %}

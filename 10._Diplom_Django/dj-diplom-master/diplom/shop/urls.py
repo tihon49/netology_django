@@ -12,5 +12,6 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('registration/', views.registration_view, name='registration'),
+    path('category/<str:category_name>', views.category_view, name='category_view'),
     path('empty_section/', views.empty_view, name='empty_view'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

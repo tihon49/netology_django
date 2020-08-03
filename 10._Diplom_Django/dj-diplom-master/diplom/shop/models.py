@@ -7,7 +7,7 @@ class Item(models.Model):
     '''Модель товара'''
     name = models.CharField('Название', max_length=250)
     slug = models.SlugField(max_length=1000, null=True, blank=True)
-    category = models.ForeignKey('Category', verbose_name='Категория товара', on_delete=models.CASCADE, blank=True, null=True)
+    category = models.ForeignKey('Category', related_name='items', verbose_name='Категория товара', on_delete=models.CASCADE, blank=True, null=True)
     description = models.CharField('Краткое описание', max_length=250, blank=True)
     price = models.DecimalField('Цена', max_digits=20, decimal_places=2)
     image = models.ImageField('Изображение')
