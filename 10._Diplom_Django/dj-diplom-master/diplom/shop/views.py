@@ -118,6 +118,7 @@ def logout_view(request):
 
 
 def category_view(request, category_name):
+	'''Отображение товаров выбранной категории'''
 	current_category = Category.objects.get(name=category_name)
 	items_in_current_category = current_category.items.all()
 	template = 'shop/smartphones.html'
