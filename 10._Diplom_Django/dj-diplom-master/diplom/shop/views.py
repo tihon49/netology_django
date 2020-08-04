@@ -29,8 +29,6 @@ def base_view(request):
 			   'wear': wear,
 			   'categories': categories,
 			   'user_session': get_session_id(request)}
-	print(categories)
-
 	return render(request, 'shop/index.html', context)
 
 
@@ -46,7 +44,8 @@ def item_view(request, item_id):
 	form = ReviewForm() # форма добавления комментария из forms.py
 	context = {'item': item,
 			   'form': form,
-			   'user_session': get_session_id(request)}
+			   'user_session': get_session_id(request),
+			   'categories': Category.objects.all()}
 
 	# отображение отзывов, если они есть
 	for review in item.reviews.all():
@@ -121,7 +120,7 @@ def category_view(request, category_name):
 	'''Отображение товаров выбранной категории'''
 	current_category = Category.objects.get(name=category_name)
 	items_in_current_category = current_category.items.all()
-	template = 'shop/smartphones.html'
+	template = 'shop/category_items.html'
 
 	paginator = Paginator(items_in_current_category, 3)
 	current_page = int(request.GET.get('page', 1))
@@ -136,7 +135,8 @@ def category_view(request, category_name):
 	context = {'category_items': page_object,
 			   'current_page': current_page,
 			   'prev_page_url': prev_page,
-			   'next_page_url': next_page}
+			   'next_page_url': next_page,
+			   'categories': Category.objects.all()}
 
 	return render(request, template, context)
 
