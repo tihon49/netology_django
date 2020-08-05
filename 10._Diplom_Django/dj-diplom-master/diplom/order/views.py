@@ -3,7 +3,7 @@ from pprint import pprint
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
-from shop.models import Item
+from shop.models import Item, Category
 from .models import Order, ItemInOrder, Status
 
 
@@ -39,7 +39,8 @@ def cart_view(request, user_name):
         order = Order.objects.get(user=current_user, is_active=True)
         all_items_in_order = ItemInOrder.objects.filter(order=order)
         context = {'cart_items': all_items_in_order,
-                   'cart_order': order}
+                   'cart_order': order,
+                   'categories': Category.objects.all()}
     except:
         context = {'empty_cart': True}
 

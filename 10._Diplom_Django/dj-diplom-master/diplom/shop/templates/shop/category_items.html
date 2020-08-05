@@ -1,6 +1,7 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 
+<!--TODO: don't work adding to cart on this page!!!-->
 
 {% block content %}
   <main role="main">
@@ -15,7 +16,8 @@
               <img src="{{ item.image.url }}" width="120">
             </a>
 
-            <form>
+            <form method="post" action="{% url 'add_item_to_cart' item_id=item.pk user=user_session %}">
+              {% csrf_token %}
               <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">
             </form>
 

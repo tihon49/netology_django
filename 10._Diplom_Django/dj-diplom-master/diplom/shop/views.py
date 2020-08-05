@@ -132,7 +132,8 @@ def category_view(request, category_name):
 	if page_object.has_previous():
 		prev_page = f'?page={page_object.previous_page_number()}'
 
-	context = {'category_items': page_object,
+	context = {'user_session': get_session_id(request),
+			   'category_items': page_object,
 			   'current_page': current_page,
 			   'prev_page_url': prev_page,
 			   'next_page_url': next_page,
