@@ -36,4 +36,4 @@ class ArticleAdmin(admin.ModelAdmin):
 
 @admin.register(Section)
 class SectionAdmin(admin.ModelAdmin):
-    pass
+    ordering = ['name']

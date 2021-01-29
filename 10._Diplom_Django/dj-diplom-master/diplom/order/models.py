@@ -5,7 +5,6 @@ from django.db.models.signals import post_save
 from shop.models import Item
 
 
-
 class Status(models.Model):
     '''Модель статуса заказа'''
     name = models.CharField('Статус', max_length=24)
@@ -17,7 +16,6 @@ class Status(models.Model):
     class Meta:
         verbose_name = 'Статус заказа'
         verbose_name_plural = 'Статусы заказов'
-
 
 
 class Order(models.Model):
@@ -35,7 +33,6 @@ class Order(models.Model):
 
     def __str__(self):
         return 'ID заказа: %s | Пользователь: %s' % (self.id, self.user)
-
 
 
 class ItemInOrder(models.Model):
@@ -60,7 +57,6 @@ class ItemInOrder(models.Model):
         super(ItemInOrder, self).save(*args, **kwargs)
 
 
-
 # source: https://www.youtube.com/watch?v=3wFpyKcVT_w&list=PLSWnD6rL-m9adebgpvvOLH5ASGJiznWdg&index=7
 # 17:25
 def item_in_order_post_save(sender, instance, created, **kwargs):
@@ -76,5 +72,6 @@ def item_in_order_post_save(sender, instance, created, **kwargs):
     instance.order.total_price = order_total_price
     instance.order.total_items_count = total_items_count_in_order
     instance.order.save(force_update=True)
+
 
 post_save.connect(item_in_order_post_save, sender=ItemInOrder)

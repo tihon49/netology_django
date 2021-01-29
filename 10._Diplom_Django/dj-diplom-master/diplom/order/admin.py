@@ -10,7 +10,6 @@ class ItemInOrderInline(admin.TabularInline):
     extra = 0
 
 
-
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'total_price', 'status']
@@ -20,13 +19,11 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [ItemInOrderInline]
 
 
-
 @admin.register(Status)
 class StatusAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'is_active']
     list_display_links = ['id', 'name']
     list_filter = ['name', 'is_active']
-
 
 
 @admin.register(ItemInOrder)

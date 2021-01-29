@@ -1,11 +1,8 @@
-from pprint import pprint
-
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 from shop.models import Item, Category
 from .models import Order, ItemInOrder, Status
-
 
 
 def add_item_to_cart(request, item_id, user):
@@ -15,10 +12,10 @@ def add_item_to_cart(request, item_id, user):
 
     try:
         current_order = Order.objects.get(user=user_object, is_active=True)
-    except: #если заказа нет, то создаем
+    except:  # если заказа нет, то создаем
         current_order = Order.objects.create(user=user_object, is_active=True)
 
-    #проверим наличие данного товара в заказе, если есть то увеличим его кол-во += 1
+    # проверим наличие данного товара в заказе, если есть то увеличим его кол-во += 1
     try:
         current_item = ItemInOrder.objects.get(order=current_order, item=item)
         current_item.count += 1
@@ -27,7 +24,6 @@ def add_item_to_cart(request, item_id, user):
         ItemInOrder.objects.create(order=current_order, item=item)
 
     return redirect('base_view')
-
 
 
 def cart_view(request, user_name):
@@ -47,7 +43,6 @@ def cart_view(request, user_name):
     return render(request, template, context)
 
 
-
 def confirm_order(request, order_id):
     '''Кнопка подтверждения заказа в корзине'''
     order = Order.objects.get(id=order_id)
@@ -55,7 +50,6 @@ def confirm_order(request, order_id):
     order.is_active = False
     order.save()
     return redirect('base_view')
-
 
 
 def not_authenticated_user(request):

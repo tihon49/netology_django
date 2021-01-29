@@ -1,6 +1,4 @@
-from django.contrib.auth.models import User
 from django.db import models
-
 
 
 class Item(models.Model):
@@ -26,7 +24,6 @@ class Item(models.Model):
         return self.name
 
 
-
 class Category(models.Model):
     '''Класс категории товара'''
     name = models.CharField('Название категории', max_length=250)
@@ -37,7 +34,6 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-
 
 
 class Review(models.Model):

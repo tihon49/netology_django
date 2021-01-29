@@ -3,7 +3,6 @@ from django.contrib import admin
 from .models import Item, Category, Review
 
 
-
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     list_display = ['name', 'category', 'price', 'id']
@@ -12,12 +11,9 @@ class ItemAdmin(admin.ModelAdmin):
     search_fields = ('name', 'price')
 
 
-
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'id']
-
-
 
 
 @admin.register(Review)
