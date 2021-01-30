@@ -19,6 +19,15 @@
 },
 
 {
+  "model": "order.status",
+  "pk": 1,
+  "fields": {
+    "name": "\u0412\u044b\u043f\u043e\u043b\u043d\u0435\u043d",
+    "is_active": true
+  }
+},
+
+{
   "model": "shop.item",
   "pk": 1,
   "fields": {
