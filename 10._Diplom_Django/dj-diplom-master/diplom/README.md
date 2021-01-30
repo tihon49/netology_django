@@ -26,11 +26,11 @@ password: admin
 python manage.py runserver
 ```
 
-*Переходим на сайт [магазина](http://127.0.0.1:8000/)*
+*Переходим на [сайт магазина](http://127.0.0.1:8000/)*
 
 ## Дизайн
 
-* [Главная страница](./resources/index.html).
+* [Главная страница](https://github.com/tihon49/netology_django/blob/master/10._Diplom_Django/dj-diplom-master/diplom/shop/templates/shop/base.html).
 * [Страница раздела](./resources/smartphones.html).
 * [Страница незаполненного раздела](./resources/empty_section.html).
 * [Страница товара](./resources/phone.html).
