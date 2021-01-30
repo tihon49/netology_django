@@ -2,7 +2,8 @@ from django.db import models
 
 
 class Item(models.Model):
-    '''Модель товара'''
+    """Модель товара"""
+
     name = models.CharField('Название', max_length=250)
     slug = models.SlugField(max_length=1000, null=True, blank=True)
     category = models.ForeignKey('Category', related_name='items',
@@ -25,7 +26,8 @@ class Item(models.Model):
 
 
 class Category(models.Model):
-    '''Класс категории товара'''
+    """Класс категории товара"""
+
     name = models.CharField('Название категории', max_length=250)
 
     class Meta:
@@ -37,7 +39,8 @@ class Category(models.Model):
 
 
 class Review(models.Model):
-    '''Модель отзыва к товару'''
+    """Модель отзыва к товару"""
+
     item = models.ForeignKey(Item, related_name='reviews', on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField('Имя', max_length=250)
     text = models.TextField('Отзыв')

@@ -6,7 +6,8 @@ from .models import Order, ItemInOrder, Status
 
 
 def add_item_to_cart(request, item_id, user):
-    '''добавление товара в заказ'''
+    """добавление товара в заказ"""
+
     item = Item.objects.get(id=item_id)
     user_object = User.objects.get(username=user)
 
@@ -27,7 +28,8 @@ def add_item_to_cart(request, item_id, user):
 
 
 def cart_view(request, user_name):
-    '''Отображение корзины конкретного полтзователя'''
+    """Отображение корзины конкретного полтзователя"""
+
     template = 'shop/cart.html'
     current_user = User.objects.get(username=user_name)
 
@@ -44,7 +46,8 @@ def cart_view(request, user_name):
 
 
 def confirm_order(request, order_id):
-    '''Кнопка подтверждения заказа в корзине'''
+    """Кнопка подтверждения заказа в корзине"""
+
     order = Order.objects.get(id=order_id)
     order.status = Status.objects.get(name='Выполнен')
     order.is_active = False
@@ -53,5 +56,7 @@ def confirm_order(request, order_id):
 
 
 def not_authenticated_user(request):
+    """страница не авторизованного пользователя"""
+
     template = 'shop/not_authenticated_user.html'
     return render(request, template)

@@ -6,7 +6,8 @@ from shop.models import Item
 
 
 class Status(models.Model):
-    '''Модель статуса заказа'''
+    """Модель статуса заказа"""
+
     name = models.CharField('Статус', max_length=24)
     is_active = models.BooleanField('Активен', default=True)
 
@@ -19,7 +20,8 @@ class Status(models.Model):
 
 
 class Order(models.Model):
-    '''Модель заказа'''
+    """Модель заказа"""
+
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE, blank=True, null=True)
     status = models.ForeignKey(Status, verbose_name='Статус', on_delete=models.CASCADE,
                                default=None, blank=True, null=True)
@@ -36,7 +38,8 @@ class Order(models.Model):
 
 
 class ItemInOrder(models.Model):
-    '''Модель товара в заказе'''
+    """Модель товара в заказе"""
+
     order = models.ForeignKey(Order, blank=True, null=True, on_delete=models.CASCADE, verbose_name='Заказ')
     item = models.ForeignKey(Item, blank=True, null=True, on_delete=models.CASCADE, verbose_name='Товар')
     count = models.IntegerField('Количество', default=1)
@@ -60,7 +63,8 @@ class ItemInOrder(models.Model):
 # source: https://www.youtube.com/watch?v=3wFpyKcVT_w&list=PLSWnD6rL-m9adebgpvvOLH5ASGJiznWdg&index=7
 # 17:25
 def item_in_order_post_save(sender, instance, created, **kwargs):
-    '''функция перезаписи данных в модели товара в заказе'''
+    """функция перезаписи данных в модели товара в заказе"""
+
     all_items_in_order = ItemInOrder.objects.filter(order=instance.order)
     order_total_price = 0
     total_items_count_in_order = 0

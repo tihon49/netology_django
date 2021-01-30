@@ -7,7 +7,8 @@ from .forms import ReviewForm, CreateUserForm
 
 
 def get_session_id(request):
-    '''Получаем имя пользователя (если авторизован) или его ID сессии'''
+    """Получаем имя пользователя (если авторизован) или его ID сессии"""
+
     if not request.user.is_authenticated:
         user_session = request.session.session_key
         if not user_session:
@@ -18,7 +19,8 @@ def get_session_id(request):
 
 
 def base_view(request):
-    '''главная страница'''
+    """главная страница"""
+
     phones = Item.objects.filter(category=1)[:3]
     wear = Item.objects.filter(category=2)[:3]
     categories = Category.objects.all()
@@ -30,7 +32,8 @@ def base_view(request):
 
 
 def item_view(request, item_id):
-    '''страница обзора выбранного товара'''
+    """страница обзора выбранного товара"""
+
     user_session = request.session.session_key
     if not user_session:
         request.session.cycle_key()
@@ -46,7 +49,7 @@ def item_view(request, item_id):
     # отображение отзывов, если они есть
     for review in item.reviews.all():
         if review.session_id == user_session:
-            context['reviewd'] = True
+            context['reviewed'] = True
             break
 
     # добавление комментария
@@ -71,7 +74,8 @@ def item_view(request, item_id):
 
 
 def registration_view(request):
-    '''страница регистрации аккаунта'''
+    """страница регистрации аккаунта"""
+
     template = 'shop/registration.html'
     form = CreateUserForm()
     if request.method == 'POST':
@@ -87,7 +91,8 @@ def registration_view(request):
 
 
 def login_view(request):
-    '''страница авторизации'''
+    """страница авторизации"""
+
     template = 'shop/login.html'
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -109,7 +114,8 @@ def logout_view(request):
 
 
 def category_view(request, category_name):
-    '''Отображение товаров выбранной категории'''
+    """Отображение товаров выбранной категории"""
+
     current_category = Category.objects.get(name=category_name)
     items_in_current_category = current_category.items.all()
     template = 'shop/category_items.html'
@@ -117,6 +123,7 @@ def category_view(request, category_name):
     paginator = Paginator(items_in_current_category, 3)
     current_page = int(request.GET.get('page', 1))
     page_object = paginator.get_page(current_page)
+    pages_count = paginator.num_pages
     prev_page, next_page = None, None
 
     if page_object.has_next():
@@ -129,12 +136,16 @@ def category_view(request, category_name):
                'current_page': current_page,
                'prev_page_url': prev_page,
                'next_page_url': next_page,
+               'current_category': current_category,
+               'pages_count': pages_count,
                'categories': Category.objects.all()}
 
     return render(request, template, context)
 
 
 def empty_view(request):
-    '''пустая страница'''
+    """пустая страница"""
+
     template = 'shop/empty_section.html'
-    return render(request, template)
+    context = {'categories': Category.objects.all()}
+    return render(request, template, context)
