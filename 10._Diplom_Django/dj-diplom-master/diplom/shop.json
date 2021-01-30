@@ -1,0 +1,272 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$6vZcMeS6TDyZ$G7QF54HA6S8qZwRYbmdqW/FY4hxMyssbwT1eVHUCw3U=",
+    "last_login": "2021-01-30T16:20:14.595Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2020-07-30T12:29:12.410Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+
+{
+  "model": "shop.item",
+  "pk": 1,
+  "fields": {
+    "name": "Nexus 5X",
+    "slug": null,
+    "category": 1,
+    "description": "\u0417\u0432\u043e\u043d\u0438\u043b\u043a\u0430",
+    "price": "23000.00",
+    "image": "nexus5x.webp",
+    "created_date": "2020-07-30T12:30:55.923Z",
+    "updated_date": "2020-07-30T12:30:55.923Z"
+  }
+},
+{
+  "model": "shop.item",
+  "pk": 2,
+  "fields": {
+    "name": "Iphone 7",
+    "slug": null,
+    "category": 1,
+    "description": "\u0410\u0439\u0444\u043e\u043d \u043e\u043d \u0438 \u0432 \u0430\u0444\u0440\u0438\u043a\u0435 \u0430\u0439\u0444\u043e\u043d",
+    "price": "45000.00",
+    "image": "iphone7.webp",
+    "created_date": "2020-07-30T12:31:34.421Z",
+    "updated_date": "2020-07-30T12:31:34.421Z"
+  }
+},
+{
+  "model": "shop.item",
+  "pk": 3,
+  "fields": {
+    "name": "Pixel 2",
+    "slug": "pixel2",
+    "category": 1,
+    "description": "\u0421\u043c\u0430\u0440\u0442\u0444\u043e\u043d \u043e\u0442 Google",
+    "price": "40000.00",
+    "image": "pixel2.webp",
+    "created_date": "2020-07-30T12:32:09.059Z",
+    "updated_date": "2020-07-30T12:32:09.060Z"
+  }
+},
+{
+  "model": "shop.item",
+  "pk": 4,
+  "fields": {
+    "name": "Samsung S8",
+    "slug": "samsungs8",
+    "category": 1,
+    "description": "\u0425\u043e\u0440\u043e\u0448\u0438\u0439 \u0442\u0435\u043b\u0435\u0444\u043e\u043d",
+    "price": "32000.00",
+    "image": "samsungs8.webp",
+    "created_date": "2020-07-30T12:32:41.278Z",
+    "updated_date": "2020-07-30T12:32:41.278Z"
+  }
+},
+{
+  "model": "shop.item",
+  "pk": 5,
+  "fields": {
+    "name": "\u0424\u0443\u0444\u0430\u0439\u043a\u0430",
+    "slug": "fuflo",
+    "category": 2,
+    "description": "\u041d\u0435 \u043f\u043e\u0442\u0435\u0439!",
+    "price": "1300.00",
+    "image": "fufajka.jpg",
+    "created_date": "2020-07-30T12:33:36.168Z",
+    "updated_date": "2020-07-30T12:37:09.421Z"
+  }
+},
+{
+  "model": "shop.item",
+  "pk": 6,
+  "fields": {
+    "name": "Lenovo IdeaPad L340",
+    "slug": "Lenovo_IdeaPad_L340",
+    "category": 3,
+    "description": "\u0421\u0435\u043c\u0435\u0439\u0441\u0442\u0432\u043e \u0441\u0440\u0435\u0434\u043d\u0435\u0444\u043e\u0440\u043c\u0430\u0442\u043d\u044b\u0445 \u0438\u0433\u0440\u043e\u0432\u044b\u0445 \u043d\u043e\u0443\u0442\u0431\u0443\u043a\u043e\u0432 \u0441 \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u043c 15,6\" \u044d\u043a\u0440\u0430\u043d\u043e\u043c FullHD-\u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u044f, \u043f\u043e\u043b\u043d\u043e\u0440\u0430\u0437\u043c\u0435\u0440\u043d\u043e\u0439 \u043a\u043b\u0430\u0432\u0438\u0430\u0442\u0443\u0440\u043e\u0439 \u0441 \u043f\u043e\u0434\u0441\u0432\u0435\u0442\u043a\u043e\u0439, \u0445\u043e\u0440\u043e\u0448\u0435\u0439 \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u043e\u0441\u0442\u044c\u044e \u0438 \u0441\u0431\u0430\u043b\u0430\u043d\u0441\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0439 \u0430\u043f\u043f\u0430\u0440\u0430\u0442\u043d\u043e\u0439 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0435\u0439.",
+    "price": "73490.00",
+    "image": "lenovo_ideapad_first.jpg",
+    "created_date": "2020-08-03T09:53:12.746Z",
+    "updated_date": "2020-08-03T10:02:25.693Z"
+  }
+},
+{
+  "model": "shop.item",
+  "pk": 7,
+  "fields": {
+    "name": "Acer Aspire 5",
+    "slug": null,
+    "category": 3,
+    "description": "\u041f\u043e\u0437\u0438\u0446\u0438\u043e\u043d\u0438\u0440\u0443\u044e\u0442\u0441\u044f \u043a\u0430\u043a \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u044b \u0441\u0440\u0435\u0434\u043d\u0435\u0439 \u0446\u0435\u043d\u043e\u0432\u043e\u0439 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438, \u043f\u0440\u0435\u0434\u043d\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044b\u0435 \u0434\u043b\u044f \u0440\u0435\u0448\u0435\u043d\u0438\u044f \u0441\u0430\u043c\u043e\u0433\u043e \u0448\u0438\u0440\u043e\u043a\u043e\u0433\u043e \u043a\u0440\u0443\u0433\u0430 \u0437\u0430\u0434\u0430\u0447.",
+    "price": "85577.00",
+    "image": "Acer_Aspire_5_A515-54G.jpg",
+    "created_date": "2020-08-03T09:55:25.971Z",
+    "updated_date": "2020-08-03T10:02:43.430Z"
+  }
+},
+{
+  "model": "shop.item",
+  "pk": 8,
+  "fields": {
+    "name": "MSI GL75",
+    "slug": null,
+    "category": 3,
+    "description": "\u041d\u0435\u043f\u043b\u043e\u0445\u0430\u044f \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u0438, \u043f\u043e\u0436\u0430\u043b\u0443\u0439, \u043e\u0434\u043d\u0430 \u0438\u0437 \u043b\u0443\u0447\u0448\u0438\u0445 \u0441\u0438\u0441\u0442\u0435\u043c \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f \u043d\u043e\u0443\u0442\u0431\u0443\u043a\u043e\u0432",
+    "price": "76900.00",
+    "image": "MSI_GL75_9SCK.jpg",
+    "created_date": "2020-08-03T09:57:54.863Z",
+    "updated_date": "2020-08-03T10:02:52.050Z"
+  }
+},
+{
+  "model": "shop.item",
+  "pk": 9,
+  "fields": {
+    "name": "MSI Bravo 15",
+    "slug": null,
+    "category": 3,
+    "description": "",
+    "price": "83990.00",
+    "image": "MSI_Bravo_15_A4DDR.jpg",
+    "created_date": "2020-08-03T09:59:05.154Z",
+    "updated_date": "2020-08-03T10:02:59.452Z"
+  }
+},
+{
+  "model": "shop.item",
+  "pk": 10,
+  "fields": {
+    "name": "Acer Nitro 5",
+    "slug": null,
+    "category": 3,
+    "description": "",
+    "price": "71990.00",
+    "image": "Acer_Nitro_5.jpg",
+    "created_date": "2020-08-03T10:00:23.297Z",
+    "updated_date": "2020-08-03T10:00:23.298Z"
+  }
+},
+{
+  "model": "shop.item",
+  "pk": 11,
+  "fields": {
+    "name": "HP Pavilion Gaming",
+    "slug": null,
+    "category": 3,
+    "description": "",
+    "price": "99882.00",
+    "image": "HP_Pavilion_Gaming_15-dk1000.jpg",
+    "created_date": "2020-08-03T10:01:17.771Z",
+    "updated_date": "2020-08-03T10:03:07.966Z"
+  }
+},
+{
+  "model": "shop.item",
+  "pk": 12,
+  "fields": {
+    "name": "Edenberg",
+    "slug": null,
+    "category": 4,
+    "description": "\u0416\u0430\u0440\u043e\u0432\u043d\u044f-c\u043e\u0442\u0435\u0439\u043d\u0438\u043a \u043a\u0432\u0430\u0434\u0440\u0430\u0442\u043d\u044b\u0439 \u0441 \u043a\u0440\u044b\u0448\u043a\u043e\u0439, 6,5 \u043b",
+    "price": "2519.00",
+    "image": "edenberg.jpg",
+    "created_date": "2020-08-04T21:25:49.271Z",
+    "updated_date": "2020-08-04T21:25:49.271Z"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 1,
+  "fields": {
+    "name": "\u0422\u0435\u043b\u0435\u0444\u043e\u043d\u044b"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 2,
+  "fields": {
+    "name": "\u041e\u0434\u0435\u0436\u0434\u0430"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 3,
+  "fields": {
+    "name": "\u041d\u043e\u0443\u0442\u0431\u0443\u043a\u0438"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 4,
+  "fields": {
+    "name": "\u0421\u043e\u0442\u0435\u0439\u043d\u0438\u043a\u0438"
+  }
+},
+{
+  "model": "shop.review",
+  "pk": 1,
+  "fields": {
+    "item": 5,
+    "name": "\u0410\u043d\u043e\u043d\u0438\u043c",
+    "text": "\u041a\u043e \u0434\u043d\u044e \u0412\u0414\u0412! =)",
+    "star": 5,
+    "session_id": "mbosn1zlze05tbeb0yyjdjwwropt8s2x"
+  }
+},
+{
+  "model": "shop.review",
+  "pk": 2,
+  "fields": {
+    "item": 5,
+    "name": "John",
+    "text": "Nice one!",
+    "star": 5,
+    "session_id": "zr3bopq4tyzck4zvfxga2s5kf3emd9sf"
+  }
+},
+{
+  "model": "shop.review",
+  "pk": 3,
+  "fields": {
+    "item": 12,
+    "name": "\u0421\u0430\u0448\u043a\u0430",
+    "text": "\u041c\u0443\u0436 \u043f\u043e\u0434\u0430\u0440\u0438\u043b, \u0434\u043e\u0432\u043e\u043b\u044c\u043d\u0430!",
+    "star": 5,
+    "session_id": "zr3bopq4tyzck4zvfxga2s5kf3emd9sf"
+  }
+},
+{
+  "model": "shop.review",
+  "pk": 4,
+  "fields": {
+    "item": 3,
+    "name": "admin",
+    "text": "\u041d\u043e\u0440\u043c \u0430\u043f\u043f\u0430\u0440\u0430\u0442",
+    "star": 5,
+    "session_id": "zr3bopq4tyzck4zvfxga2s5kf3emd9sf"
+  }
+},
+{
+  "model": "shop.review",
+  "pk": 5,
+  "fields": {
+    "item": 5,
+    "name": "\u0410\u043d\u043e\u043d\u0438\u043c\u0443\u0441",
+    "text": "\u0422\u0430\u043a\u043e\u0435 \u0441\u0435\u0431\u0435",
+    "star": 3,
+    "session_id": "fbrn28u7f7p5791gvkd13msyzu04yo41"
+  }
+}
+]
